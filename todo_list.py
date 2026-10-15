@@ -1,6 +1,7 @@
 import streamlit as st
 
 from task import Task
+from jokes import generate_joke
 
 # task_list = [Task('Buy Milk'), Task('Walk the dog'), Task('Walk the dog')]
 # task_list = []
@@ -27,13 +28,15 @@ with st.sidebar:
     if st.button('Add task', type='primary'):
         add_task(task)
 
+# st.info(f'task_list: {task_list}')
+st.info(generate_joke('FVGv3SDEX7GSeNdBbdqMWej99NLgJIGgJMTZGij5'))
+
 total_tasks = len(task_list)
 completed_tasks = sum(1 for task in task_list if task.is_done)
 metric_dispaly = f'{completed_tasks}/{total_tasks} done'
 st.metric('Task completion', metric_dispaly, delta=None)
 
 st.header("Today's to-dos:", divider='gray')
-# st.info(f'task_list: {task_list}')
 
 for idx, task in enumerate(task_list):
     task_col, delete_col = st.columns([0.8, 0.2])
