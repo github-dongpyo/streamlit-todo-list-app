@@ -8,6 +8,9 @@ from jokes import generate_joke
 if 'task_list' not in st.session_state:
     st.session_state.task_list = []
 
+if 'joke' not in st.session_state:
+    st.session_state.joke = generate_joke('FVGv3SDEX7GSeNdBbdqMWej99NLgJIGgJMTZGij5')
+
 task_list = st.session_state.task_list
 
 def add_task(task_name: str):
@@ -29,7 +32,8 @@ with st.sidebar:
         add_task(task)
 
 # st.info(f'task_list: {task_list}')
-st.info(generate_joke('FVGv3SDEX7GSeNdBbdqMWej99NLgJIGgJMTZGij5'))
+# st.info(generate_joke('FVGv3SDEX7GSeNdBbdqMWej99NLgJIGgJMTZGij5'))
+st.info(st.session_state.joke)
 
 total_tasks = len(task_list)
 completed_tasks = sum(1 for task in task_list if task.is_done)
